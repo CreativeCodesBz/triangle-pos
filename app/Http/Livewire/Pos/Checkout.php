@@ -50,11 +50,10 @@ class Checkout extends Component
     }
 
     public function proceed() {
-        if ($this->customer_id != null) {
-            $this->dispatchBrowserEvent('showCheckoutModal');
-        } else {
-            session()->flash('message', 'Please Select Customer!');
+        if (is_null($this->customer_id)) {
+            session()->flash('message', 'A customer was not selected.');
         }
+        $this->dispatchBrowserEvent('showCheckoutModal');
     }
 
     public function calculateTotal() {

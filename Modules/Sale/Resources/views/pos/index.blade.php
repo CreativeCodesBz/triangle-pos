@@ -61,6 +61,12 @@
                     $('#total_amount').val(total_amount);
                 });
             });
+
+            $("#tendered").change(function(){
+                var total_amount = $('#total_amount').maskMoney('unmasked')[0];
+                $("#change").val(this.value - total_amount)
+            });
+
         });
     </script>
 

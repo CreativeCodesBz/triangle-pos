@@ -16,6 +16,16 @@ class PeopleDatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        Customer::create([
+            'customer_name' => 'Cash Customer',
+            'customer_email' => 'customer@customer.com',
+            'customer_phone' => '999-999-9999',
+            'city' => 'Customer',
+            'country' => 'Customer',
+            'address' => 'Customer'
+        ]);
+
         Customer::factory()->count(15)->create();
         Supplier::factory()->count(6)->create();
     }
