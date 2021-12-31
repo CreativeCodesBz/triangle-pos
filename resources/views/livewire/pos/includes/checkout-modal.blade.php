@@ -36,9 +36,11 @@
                                         <input id="tendered" type="number" class="form-control" name="tendered" step="0.01">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="change">Change</label>
-                                    <input id="change" type="number" class="form-control" name="change" value="0.00" step="0.01" readonly>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="change">Change</label>
+                                        <input id="change" type="number" class="form-control" name="change" value="0.00" step="0.01" readonly>
+                                    </div>
                                 </div>
                             </div>
 
