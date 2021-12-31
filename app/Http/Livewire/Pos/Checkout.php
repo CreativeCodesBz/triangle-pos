@@ -107,11 +107,11 @@ class Checkout extends Component
     }
 
     public function updatedGlobalTax() {
-        Cart::instance($this->cart_instance)->setGlobalTax((integer)$this->global_tax);
+        Cart::instance($this->cart_instance)->setGlobalTax((float)$this->global_tax);
     }
 
     public function updatedGlobalDiscount() {
-        Cart::instance($this->cart_instance)->setGlobalDiscount((integer)$this->global_discount);
+        Cart::instance($this->cart_instance)->setGlobalDiscount((float)$this->global_discount);
     }
 
     public function updateQuantity($row_id, $product_id) {
