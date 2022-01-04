@@ -20,12 +20,15 @@ class HomeController extends Controller
 {
 
     public function index() {
-        $sales = Sale::completed()->sum('total_amount');
-        $sale_returns = SaleReturn::completed()->sum('total_amount');
-        $purchase_returns = PurchaseReturn::completed()->sum('total_amount');
+        $monday = date('Y-m-d', strtotime('monday this week'));
+        $sunday = date('Y-m-d', strtotime('sunday this week'));
+
+        $sales = Sale::whereBetween('date', [$monday, $sunday])->completed()->sum('total_amount');
+        $sale_returns = SaleReturn::whereBetween('date', [$monday, $sunday])->completed()->sum('total_amount');
+        $purchase_returns = PurchaseReturn::whereBetween('date', [$monday, $sunday])->completed()->sum('total_amount');
         $product_costs = 0;
 
-        foreach (Sale::completed()->with('saleDetails')->get() as $sale) {
+        foreach (Sale::whereBetween('date', [$monday, $sunday])->completed()->with('saleDetails')->get() as $sale) {
             foreach ($sale->saleDetails as $saleDetail) {
                 $product_costs += $saleDetail->product->product_cost * $saleDetail->quantity;
             }
